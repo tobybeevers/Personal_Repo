@@ -6,6 +6,13 @@
   padding: 0 40px
 }
 
+.container1 {
+  max-width: 2100px;
+  margin: 0 auto;
+  overflow: auto;
+  padding: 0 40px
+}
+
 .card {
   background-color: #fff;
   color: #333;
