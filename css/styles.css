@@ -79,6 +79,10 @@ p {
   
 }
 
+.padded-left {
+  padding-left: 30px; /* Adjust as needed */
+}
+
 /* Setting the image width to 100% to allow them to take 100% of the container they will be added to */
 img {
   height: 100%;
