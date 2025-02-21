@@ -60,6 +60,16 @@ h3 {
   margin: 10px 0;
   color: var(--secondary-color);
 }
+
+h3light {
+  font-family: Play;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0px;
+  margin: 10px 0;
+  color: var(--light-color);
+}
+
 h4 {
   font-family: Play;
   font-weight: 800;
