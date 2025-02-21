@@ -61,7 +61,7 @@ h3 {
   color: var(--secondary-color);
 }
 
-h3light {
+.h3light {
   font-family: Play;
   font-weight: 800;
   line-height: 1.15;
