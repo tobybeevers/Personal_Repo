@@ -248,6 +248,18 @@ img {
   color: var(--light-color);
 }
 
+.inline-icon {
+  width: 4rem;
+  height: 4rem;
+  display: inline-block;
+  color: #274C77;
+}
+
+.inline-icon--xl {
+  width: 10rem;
+  height: 10rem;
+}
+
 /*TABLETS & UNDER*/
 @media(max-width: 768px){
   .grid,
@@ -312,4 +324,3 @@ img {
     padding-top: 2.5rem;
   }
 }
-
