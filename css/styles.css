@@ -6,6 +6,11 @@
   --secondary-color: #274C77;
   --dark-color: #8B8C89; 
   --light-color: #E7ECEF;
+  --surface-color: #ffffff;
+  --text-color: #12263a;
+  --text-soft: #36536b;
+  --shadow-soft: 0 12px 30px rgba(39, 76, 119, 0.16);
+  --shadow-hover: 0 18px 40px rgba(39, 76, 119, 0.22);
 }
 
 /* SET UP*/
@@ -20,8 +25,9 @@
 /* Setting the font, color and line height defaults*/
 body{
   font-family: 'Play', sans-serif;
-  color: #000;
-  line-height: 1.6;
+  color: var(--text-color);
+  background: linear-gradient(180deg, #f4f8fb 0%, #eef4f8 100%);
+  line-height: 1.7;
 }
 
 /*Removing the formating from the lists used in the menu bar (bullet points)*/
@@ -32,7 +38,12 @@ ul{
 /* These are the links used in the menu bar, removing the Link Underlines and adding colour*/
 a {
   text-decoration: none;
-  color: #1a7090;
+  color: var(--secondary-color);
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-color);
 }
 
 h1 {
@@ -40,7 +51,7 @@ h1 {
   font-weight: 800;
   line-height: 1.5;
   letter-spacing: 0px;
-  margin: 10px 0;
+  margin: 14px 0;
   color: var(--light-color);
 }
 
@@ -49,7 +60,7 @@ h2 {
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: 0px;
-  margin: 10px 0;
+  margin: 12px 0;
   color: var(--light-color);
 }
 h3 {
@@ -82,10 +93,10 @@ h4 {
 p {
   font-family: Play;
   font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: 1px;
-  margin: 10px 0;
-  color: var(--secondary-color);
+  line-height: 1.6;
+  letter-spacing: 0.25px;
+  margin: 12px 0;
+  color: var(--text-soft);
   
 }
 
@@ -95,79 +106,112 @@ p {
 
 /* Setting the image width to 100% to allow them to take 100% of the container they will be added to */
 img {
-  height: 100%;
+  height: auto;
   width: 100%;
-  border-radius: 2%;
+  border-radius: 12px;
+}
+
+/* Accessibility */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--secondary-color);
+  color: var(--light-color);
+  padding: 0.8rem 1rem;
+  z-index: 9999;
+  border-radius: 0 0 8px 8px;
+}
+
+.skip-link:focus {
+  left: 1rem;
 }
 
 /*NAV BAR*/
 /* Create various classes for NavBar to hold the formatting of the Navigation Bar across all pages*/
 .navbar {
-  background-color: var(--secondary-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background: rgba(39, 76, 119, 0.92);
   color: #fff;
-  height: 70px;
+  min-height: 82px;
+  box-shadow: 0 8px 24px rgba(20, 37, 59, 0.18);
 }
 .navbar ul {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
 }
 .navbar a {
   color: #fff;
-  font-size: 22px;
-  padding: 10px;
+  font-size: 1.05rem;
+  padding: 10px 12px;
   margin: 0 5px;   
+  border-radius: 8px;
 }
 .navbar a:hover {
-  border-bottom: 2px var(--primary-color) solid;
+  background: rgba(255, 255, 255, 0.12);
 }
 .navbar .flex {
   justify-content: space-between;
 }
 
+.navbar a[aria-current="page"] {
+  background: rgba(96, 150, 186, 0.35);
+  font-weight: 700;
+}
+
 /* SHOWCASE/HERO */
 .showcase{
-  height: 400px;
+  min-height: 480px;
   background-color: var(--primary-color);
   color: #fff;
   position: relative;
+  border-radius: 0 0 28px 28px;
 }
 .showcase h1{
-  font-size: 40px;
+  font-size: clamp(2rem, 4vw, 3rem);
 }
 .showcase p {
-  margin: 20px 0;
+  margin: 16px 0;
+  color: #f5fbff;
 }
 .showcase .grid {
   grid-template-columns: 55% 45%;
-  gap: 30px;
+  gap: 40px;
   overflow: visible;
 }
 .showcase-form {
-  position: relative;
-  top: 60px;
-  height: 350px;
-  width: 400px;
-  padding: 40px;
+  height: 100%;
+  max-height: 420px;
+  width: min(100%, 430px);
+  padding: 20px;
   z-index: 100;
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
 }
 
 .showcase2{
-  height: 400px;
+  min-height: 460px;
   background-color: var(--light-color);
   position: relative;
+  border-radius: 0 0 28px 28px;
 }
 .showcase2 h1{
-  font-size: 40px;
+  font-size: clamp(2rem, 4vw, 3rem);
   color: var(--secondary-color);
 }
 .showcase2 h2{
   color: var(--secondary-color);
 }
 .showcase2 p {
-  margin: 20px 0;
+  margin: 16px 0;
 }
 .showcase2 .grid {
   grid-template-columns: 55% 45%;
-  gap: 30px;
+  gap: 40px;
   overflow: visible;
 }
 .showcase2-form {
@@ -180,15 +224,29 @@ img {
 }
 
 .showcase-wide {
-  max-width: 3000px; /* Adjust the width as needed */
+  max-width: 1600px;
   width: 90%; /* Ensures responsiveness */
   margin: 0 auto; /* Centers the content */
 }
 
 /* CLIs*/
+.cli {
+  padding: 3.5rem 0;
+}
+
 .cli .grid {
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+.footer {
+  margin-top: 2rem;
+}
+
+.footer h1,
+.footer h2,
+.footer a {
+  color: var(--light-color);
 }
 
 /*TABLETS & UNDER*/
@@ -203,6 +261,11 @@ img {
   }
   .showcase {
     height: auto;
+    border-radius: 0 0 22px 22px;
+  }
+  .showcase2 {
+    min-height: auto;
+    border-radius: 0 0 22px 22px;
   }
   .showcase-text{
     text-align: center;
@@ -211,6 +274,7 @@ img {
   .showcase-form {
     justify-self: center;
     margin: auto;
+    max-height: 360px;
   }
   .cli .grid > *:first-child {
     grid-column: 1;
@@ -219,26 +283,34 @@ img {
 }
 
 @media(max-width: 500px) {
+  .navbar {
+    min-height: 110px;
+  }
   .navbar .flex {
     flex-direction: column;
-    align-items: left; /* Center items horizontally */
+    align-items: stretch;
   }
   .navbar ul {
-    padding: 0; /* Remove padding */
-    background-color: var(--secondary-color); /* Match navbar background color */
-    width: 100%; /* Take full width */
+    padding: 0;
+    background-color: transparent;
+    width: 100%;
+    justify-content: center;
   }
   .navbar a {
-    display: block; /* Make links take full width */
-    padding: 15px 15; /* Add vertical padding */
-    font-size: 14px; /* Decrease font size */
-    text-align: center; /* Center text */
-    margin: 0; /* Remove margin */
-    border-bottom: 1px solid rgba(255,255,255,0.1); /* Add a separator */
+    display: block;
+    padding: 10px 10px;
+    font-size: 0.92rem;
+    text-align: center;
+    margin: 0;
   }
-  .navbar a:last-child {
-    border-bottom: none; /* Remove separator for last link */
+
+  .showcase,
+  .showcase2 {
+    padding-bottom: 1.5rem;
+  }
+
+  .cli {
+    padding-top: 2.5rem;
   }
 }
-
 
